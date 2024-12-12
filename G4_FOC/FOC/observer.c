@@ -3,6 +3,7 @@
 #include  <math.h>
 #include "main.h"
 
+#include "arm_math.h"
    void utils_norm_angle_rad(float *angle) {
 	while (*angle < - M_PI)  { *angle += 2.0 * M_PI;  }
 	while (*angle >=  M_PI)  { *angle -= 2.0 * M_PI;  }
@@ -45,7 +46,7 @@ float gamma_half=	observer->motore_gamma*0.5f;    //半增益
 	
 float err=SQ(observer->motore_lambda)-(SQ(observer->x1-l_ia)+SQ(observer->x2-l_ib));//误差
 	
-//	if(err>0)err=0;
+	if(err>0)err=0;
 	
 	//观测器更新
 	float x1_dot=observer->motore_va-r_ia+gamma_half*(observer->x1-l_ia)*err;
@@ -56,8 +57,11 @@ float err=SQ(observer->motore_lambda)-(SQ(observer->x1-l_ia)+SQ(observer->x2-l_i
 	
 	UTILS_NAN_ZERO(observer->x1);
   UTILS_NAN_ZERO(observer->x2);
+	
+  observer->motore_cos_data = (observer->x1 - l_ia)/observer->motore_lambda;
+	observer->motore_sin_data	= (observer->x2 - l_ib)/observer->motore_lambda;	
 	/*反切获取角度  实现*/
-	observer->motore_ang=atan2(observer->x2 - l_ib , observer->x1 - l_ia) ;
+	observer->motore_ang=atan2f(observer->motore_cos_data ,observer->motore_sin_data ) ;
 
 	
 }
@@ -152,8 +156,7 @@ utils_norm_angle_rad(&pll->pll_ang);                                            
 	
 pll->pll_speeed+=pll->pll_ki*pll->pll_err;                  //pi
 	
-        pll->pll_e_speeed =                          //计算电速度
-        pll->pll_speeed*0.5f*0.318309886f;		
+
 	
 }
 

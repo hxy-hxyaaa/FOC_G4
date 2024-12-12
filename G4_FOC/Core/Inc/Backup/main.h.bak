@@ -182,12 +182,13 @@ float deviation_ang;
 
 
 // 定义FOC算法所需的常数
-#define M_PI (3.14159265358f)         // 圆周率
-#define M_2PI (6.28318530716f)        // 2倍圆周率
-#define SQRT3 (1.73205080757f)        // 3的平方根
-#define SQRT3_BY_2 (0.86602540378f)   // 3的平方根的一半
+#define M_PI         (3.14159265358f)         // 圆周率
+#define M_2PI        (6.28318530716f)        // 2倍圆周率
+#define SQRT3        (1.73205080757f)        // 3的平方根
+#define SQRT3_BY_2   (0.86602540378f)   // 3的平方根的一半
 #define ONE_BY_SQRT3 (0.57735026919f) // 1除以3的平方根
 #define TWO_BY_SQRT3 (1.15470053838f) // 2除以3的平方根
+#define ONE_BY_3     (0.33333333333f) // 1除以3
 
 #define SQ(x) ((x) * (x))             // 求平方
 #define ABS(x) ((x) > 0 ? (x) : -(x)) // 求绝对值
@@ -199,20 +200,6 @@ float deviation_ang;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define LED1_Pin GPIO_PIN_13
-#define LED1_GPIO_Port GPIOC
-#define LED2_Pin GPIO_PIN_14
-#define LED2_GPIO_Port GPIOC
-#define LED3_Pin GPIO_PIN_15
-#define LED3_GPIO_Port GPIOC
-#define K4_Pin GPIO_PIN_6
-#define K4_GPIO_Port GPIOC
-#define K2_Pin GPIO_PIN_7
-#define K2_GPIO_Port GPIOC
-#define K3_Pin GPIO_PIN_8
-#define K3_GPIO_Port GPIOC
-#define K4C9_Pin GPIO_PIN_9
-#define K4C9_GPIO_Port GPIOC
 #define SPI1_CS_Pin GPIO_PIN_2
 #define SPI1_CS_GPIO_Port GPIOD
 

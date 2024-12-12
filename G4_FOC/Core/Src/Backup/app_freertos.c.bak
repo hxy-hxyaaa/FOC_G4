@@ -47,16 +47,28 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId KEY_LED_TaskHandle;
-osThreadId FOC_TaskHandle;
+/* Definitions for KEY_LED_Task */
+osThreadId_t KEY_LED_TaskHandle;
+const osThreadAttr_t KEY_LED_Task_attributes = {
+  .name = "KEY_LED_Task",
+  .priority = (osPriority_t) osPriorityLow,
+  .stack_size = 128 * 4
+};
+/* Definitions for FOC_Task */
+osThreadId_t FOC_TaskHandle;
+const osThreadAttr_t FOC_Task_attributes = {
+  .name = "FOC_Task",
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 256 * 4
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */
 
-void StartKEY_LED_Task(void const * argument);
-void StartFOC_Task(void const * argument);
+void StartKEY_LED_Task(void *argument);
+void StartFOC_Task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -87,17 +99,19 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of KEY_LED_Task */
-  osThreadDef(KEY_LED_Task, StartKEY_LED_Task, osPriorityLow, 0, 128);
-  KEY_LED_TaskHandle = osThreadCreate(osThread(KEY_LED_Task), NULL);
+  /* creation of KEY_LED_Task */
+  KEY_LED_TaskHandle = osThreadNew(StartKEY_LED_Task, NULL, &KEY_LED_Task_attributes);
 
-  /* definition and creation of FOC_Task */
-  osThreadDef(FOC_Task, StartFOC_Task, osPriorityHigh, 0, 256);
-  FOC_TaskHandle = osThreadCreate(osThread(FOC_Task), NULL);
+  /* creation of FOC_Task */
+  FOC_TaskHandle = osThreadNew(StartFOC_Task, NULL, &FOC_Task_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
 
 }
 
@@ -108,7 +122,7 @@ void MX_FREERTOS_Init(void) {
   * @retval None
   */
 /* USER CODE END Header_StartKEY_LED_Task */
-__weak void StartKEY_LED_Task(void const * argument)
+__weak void StartKEY_LED_Task(void *argument)
 {
   /* USER CODE BEGIN StartKEY_LED_Task */
 	
@@ -130,7 +144,7 @@ __weak void StartKEY_LED_Task(void const * argument)
 * @retval None
 */
 /* USER CODE END Header_StartFOC_Task */
-__weak void StartFOC_Task(void const * argument)
+__weak void StartFOC_Task(void *argument)
 {
   /* USER CODE BEGIN StartFOC_Task */
 

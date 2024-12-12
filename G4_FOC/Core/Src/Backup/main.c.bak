@@ -20,7 +20,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "adc.h"
-#include "fdcan.h"
 #include "spi.h"
 #include "tim.h"
 #include "gpio.h"
@@ -94,7 +93,6 @@ int main(void)
   MX_TIM1_Init();
   MX_ADC1_Init();
   MX_SPI1_Init();
-  MX_FDCAN1_Init();
   /* USER CODE BEGIN 2 */
 	/*ADC*/
 	HAL_ADCEx_InjectedStart(&hadc1);
@@ -110,7 +108,7 @@ int main(void)
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
 	__HAL_TIM_ENABLE_IT(&htim1,TIM_IT_UPDATE);
 
-  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 3400);
+  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 3350);
 	
 	HAL_NVIC_SetPriority(UART4_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(UART4_IRQn);	
@@ -120,6 +118,9 @@ int main(void)
 		set_dtc_c(0);	
 	
   /* USER CODE END 2 */
+
+  /* Init scheduler */
+  osKernelInitialize();
 
   /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();

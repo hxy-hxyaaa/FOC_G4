@@ -27,7 +27,6 @@ g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_adc.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc_ex.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_exti.h
-g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_fdcan.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h
@@ -39,3 +38,6 @@ g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h
 g4_foc\observer.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h
 g4_foc\observer.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
 g4_foc\observer.o: ../Core/Inc/main.h
+g4_foc\observer.o: ../Drivers/CMSIS/DSP/Include/arm_math.h
+g4_foc\observer.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+g4_foc\observer.o: D:\keil\ARM\ARMCC\Bin\..\include\float.h

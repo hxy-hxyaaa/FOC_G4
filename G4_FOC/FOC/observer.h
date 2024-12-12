@@ -34,7 +34,9 @@ typedef struct {
 	
 	float motore_ang;       //观测角度
 
+  float motore_sin_data;       //观测角度sin
 	
+  float motore_cos_data;       //观测角度cos
 } observer_state;
 
 

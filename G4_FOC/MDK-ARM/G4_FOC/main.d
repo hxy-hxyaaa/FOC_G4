@@ -26,7 +26,6 @@ g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_adc.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc_ex.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_exti.h
-g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_fdcan.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h
@@ -36,7 +35,7 @@ g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_spi.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_spi_ex.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h
 g4_foc\main.o: ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h
-g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 g4_foc\main.o: ../Core/Inc/FreeRTOSConfig.h
 g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
@@ -46,12 +45,8 @@ g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F
 g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
-g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
-g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
-g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
-g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+g4_foc\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 g4_foc\main.o: ../Core/Inc/adc.h
-g4_foc\main.o: ../Core/Inc/fdcan.h
 g4_foc\main.o: ../Core/Inc/spi.h
 g4_foc\main.o: ../Core/Inc/tim.h
 g4_foc\main.o: ../Core/Inc/gpio.h

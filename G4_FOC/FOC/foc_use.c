@@ -61,7 +61,7 @@ void sin_cos_val(foc_para_t *foc)
 **/
     void clarke_transform(foc_para_t *foc)
 {
-    foc->i_alpha = foc->i_a;
+    foc->i_alpha = foc->i_a-(foc->i_a + foc->i_b + foc->i_c)*ONE_BY_3;
     foc->i_beta = (foc->i_b - foc->i_c) * ONE_BY_SQRT3;
 }
 
