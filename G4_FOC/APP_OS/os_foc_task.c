@@ -74,8 +74,10 @@ for(int i=0;i<100;i++)
   {
 //		ANG_SPEED+=ANG_SPEED_ADD;
 //		MY_ANG=360*sin(ANG_SPEED*2*M_PI);
-  MY_SPEED= PID_Position(&PID_ANG,MY_ANG,mt6835.reality_angle);
-  my_iq= PID_Position(&PID_SPEED,MY_SPEED,PLL_6835.pll_speed_ver);
+// 
+
+//		MY_SPEED= PID_Position(&PID_ANG,MY_ANG,mt6835.reality_angle);
+    my_iq= PID_Position(&PID_SPEED,MY_SPEED,PLL_6835.pll_speed_ver);
 
 
 

@@ -180,7 +180,8 @@ float deviation_ang;
 #define set_dtc_c(value)     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, value)
 
 
-
+#define PWM_TIME_ON HAL_GPIO_WritePin(FOC_TIME_GPIO_Port,FOC_TIME_Pin,GPIO_PIN_SET);
+#define PWM_TIME_OFF HAL_GPIO_WritePin(FOC_TIME_GPIO_Port,FOC_TIME_Pin,GPIO_PIN_RESET);
 // 定义FOC算法所需的常数
 #define M_PI         (3.14159265358f)         // 圆周率
 #define M_2PI        (6.28318530716f)        // 2倍圆周率
@@ -200,6 +201,8 @@ float deviation_ang;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define FOC_TIME_Pin GPIO_PIN_3
+#define FOC_TIME_GPIO_Port GPIOC
 #define SPI1_CS_Pin GPIO_PIN_2
 #define SPI1_CS_GPIO_Port GPIOD
 

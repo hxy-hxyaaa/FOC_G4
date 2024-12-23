@@ -52,17 +52,17 @@ void foc_task(void)
   mt6835_4_ang=(mt6835.now_angle/360-0.5f)*8*M_PI+mt6835_4_ang_err;
 	utils_norm_angle_rad(&mt6835_4_ang);
 		use_mt6835_4_ang=mt6835_4_ang;
-			FOC_observer_set(&flux_observer,-FOC_DATA.i_alpha,-FOC_DATA.i_beta,FOC_DATA.v_alpha,FOC_DATA.v_beta);
-		  FOC_observer_run(&flux_observer);
-		  PLL_ang_set(&PLL_OBSERVER ,flux_observer.motore_sin_data,flux_observer.motore_cos_data);
-      PLL_ang_run(&PLL_OBSERVER);
+
+//			FOC_observer_set(&flux_observer,-FOC_DATA.i_alpha,-FOC_DATA.i_beta,FOC_DATA.v_alpha,FOC_DATA.v_beta);
+//		  FOC_observer_run(&flux_observer);
+//		  PLL_ang_set(&PLL_OBSERVER ,flux_observer.motore_sin_data,flux_observer.motore_cos_data);
+//      PLL_ang_run(&PLL_OBSERVER);
 
 		
 		  PLL_ESAY_set(&PLL_6835 ,(mt6835.now_angle/360-0.5f)*2*M_PI);
 
        PLL_ESAY_run(&PLL_6835);
 	
-
       FOC_DATA.theta=use_mt6835_4_ang;
       sin_cos_val(&FOC_DATA);//½Ç¶È			
 
