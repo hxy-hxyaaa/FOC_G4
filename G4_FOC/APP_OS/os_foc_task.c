@@ -7,6 +7,7 @@
 #include "math.h"
 #include "foc_use.h"
 #include "observer.h"
+#include "Filter.h"
 extern PLL_EASY PLL_6835;
 extern foc_para_t FOC_DATA;
 extern Angle mt6835;
@@ -63,6 +64,10 @@ for(int i=0;i<100;i++)
 
  FOC_observer_init(&flux_observer,0.0003307f,0.0004909f,0.3246f,0.008673f,13000000,0.00004 );
 		osDelay(100);	
+
+
+ my_Filteriniy();
+
 	   foc_ok=1;
 
 	  TickType_t xLastWakeTime;
@@ -77,9 +82,9 @@ for(int i=0;i<100;i++)
 // 
 
 //		MY_SPEED= PID_Position(&PID_ANG,MY_ANG,mt6835.reality_angle);
-    my_iq= PID_Position(&PID_SPEED,MY_SPEED,PLL_6835.pll_speed_ver);
+//    my_iq= PID_Position(&PID_SPEED,MY_SPEED,PLL_6835.pll_speed_ver);
 
-
+my_Filterrun();
 
 
    vTaskDelayUntil( &xLastWakeTime, xDelay1ms );

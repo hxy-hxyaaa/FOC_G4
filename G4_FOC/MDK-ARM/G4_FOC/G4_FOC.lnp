@@ -45,6 +45,7 @@
 "g4_foc\foc_i.o"
 "g4_foc\encoder.o"
 "g4_foc\observer.o"
+"g4_foc\filter.o"
 "g4_foc\os_foc_task.o"
 "..\Drivers\CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib"
 --library_type=microlib --strict --scatter "G4_FOC\G4_FOC.sct"

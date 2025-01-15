@@ -54,3 +54,5 @@ g4_foc\os_foc_task.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
 g4_foc\os_foc_task.o: ../FOC/foc_use.h
 g4_foc\os_foc_task.o: ../FOC/observer.h
 g4_foc\os_foc_task.o: ../FOC/observer.h
+g4_foc\os_foc_task.o: ../FOC/Filter.h
+g4_foc\os_foc_task.o: ../FOC/Filter.h

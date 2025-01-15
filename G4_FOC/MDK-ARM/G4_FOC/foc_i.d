@@ -48,3 +48,5 @@ g4_foc\foc_i.o: ..\FOC\observer.h
 g4_foc\foc_i.o: ../Drivers/CMSIS/DSP/Include/arm_math.h
 g4_foc\foc_i.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
 g4_foc\foc_i.o: D:\keil\ARM\ARMCC\Bin\..\include\float.h
+g4_foc\foc_i.o: ..\FOC\Filter.h
+g4_foc\foc_i.o: ..\FOC\Filter.h
