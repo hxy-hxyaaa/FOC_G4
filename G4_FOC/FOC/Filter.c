@@ -239,23 +239,112 @@ float apply_biquad_filter(BiquadFilter* filter, float input)
 }
 
 
-BiquadFilter my_fittle;
+//BiquadFilter my_fittle;
+
+//void my_Filteriniy(void)
+//{
+//init_biquad_band_pass_filter(&my_fittle, 1000,  20, 5, 0.707);
+
+
+
+//}
+
+//void my_Filterrun(void)
+//{
+//	speedt+=0.001f;
+//if(speedt>=1000.0f)speedt-=1000.0f;
+//	speed1=speeda+arm_sin_f32(speedf*2*3.141592654f*speedt);
+
+//	speed2=apply_biquad_filter(&my_fittle,speed1);
+//	
+//}
+
+
+typedef struct {
+    float a0, a1, a2;  // 分子系数
+    float b1, b2;      // 分母系数
+    float z1, z2;      // 中间变量（延迟线）
+    float sample_rate;
+    float cutoff_freq;
+    float damping_ratio;
+} AdaptiveLowPassFilter;
+
+void init_adaptive_low_pass_filter(AdaptiveLowPassFilter* filter, float sample_rate, float cutoff_freq, float damping_ratio)
+{
+    filter->sample_rate = sample_rate;
+    filter->cutoff_freq = cutoff_freq;
+    filter->damping_ratio = damping_ratio;
+    filter->z1 = filter->z2 = 0.0f;
+
+    // 初始化滤波器系数
+    float omega = 2.0f * PI * cutoff_freq / sample_rate;
+    float sn = sinf(omega);
+    float cs = cosf(omega);
+    float alpha = sn / (2.0f * damping_ratio);
+    float a0_inv = 1.0f / (1.0f + alpha);
+
+    filter->a0 = a0_inv * (1.0f - cs) / 2.0f;
+    filter->a1 = a0_inv * (1.0f - cs);
+    filter->a2 = a0_inv * (1.0f - cs) / 2.0f;
+    filter->b1 = a0_inv * (-2.0f * cs);
+    filter->b2 = a0_inv * (1.0f - alpha);
+}
+
+void update_filter_coefficients(AdaptiveLowPassFilter* filter, float new_cutoff_freq)
+{
+    filter->cutoff_freq = new_cutoff_freq;
+
+    // 更新滤波器系数
+    float omega = 2.0f * PI * new_cutoff_freq / filter->sample_rate;
+    float sn = sinf(omega);
+    float cs = cosf(omega);
+    float alpha = sn / (2.0f * filter->damping_ratio);
+    float a0_inv = 1.0f / (1.0f + alpha);
+
+    filter->a0 = a0_inv * (1.0f - cs) / 2.0f;
+    filter->a1 = a0_inv * (1.0f - cs);
+    filter->a2 = a0_inv * (1.0f - cs) / 2.0f;
+    filter->b1 = a0_inv * (-2.0f * cs);
+    filter->b2 = a0_inv * (1.0f - alpha);
+}
+
+float apply_adaptive_low_pass_filter(AdaptiveLowPassFilter* filter, float input)
+{
+    // 应用滤波器
+    float output = filter->a0 * input + filter->z1;
+    filter->z1 = filter->a1 * input + filter->z2 - filter->b1 * output;
+    filter->z2 = filter->a2 * input - filter->b2 * output;
+
+    return output;
+}
+
+
+
+
+AdaptiveLowPassFilter my_fittle;
 
 void my_Filteriniy(void)
 {
-init_biquad_band_pass_filter(&my_fittle, 1000,  20, 5, 0.707);
-
-
+init_adaptive_low_pass_filter(&my_fittle, 1000,  100,0.507f);
 
 
 
 }
+
+	float data;
 void my_Filterrun(void)
 {
 	speedt+=0.001f;
 if(speedt>=1000.0f)speedt-=1000.0f;
-	speed1=speeda+arm_sin_f32(speedf*2*3.141592654f*speedt);
+	speeda=10*arm_sin_f32(speedt*speedf);
+	speed1=speeda+0.1*speeda*arm_sin_f32(0.1*speeda*2*3.141592654f*speedt);
 
-	speed2=apply_biquad_filter(&my_fittle,speed1);
+	if(speeda>=0)data=speeda;
+	else data=-speeda;
+//    adapt_cutoff_frequency(&my_fittle, speed1, threshold);  // 自适应调整截止频率
+    update_filter_coefficients(&my_fittle,data+10);
+	speed2 = apply_adaptive_low_pass_filter(&my_fittle, speed1);
+ 
+
 	
 }
